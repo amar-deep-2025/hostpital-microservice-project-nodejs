@@ -27,4 +27,20 @@ router.get(
   })
 );
 
+router.use(
+  "/appointments",
+  createProxyMiddleware({
+    target: process.env.APPOINTMENT_SERVICE_URL,
+    changeOrigin: true,
+  })
+);
+
+router.use(
+  "/billing",
+  createProxyMiddleware({
+    target: process.env.BILLING_SERVICE_URL,
+    changeOrigin: true,
+  })
+);
+
 module.exports = router;
